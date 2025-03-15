@@ -1,0 +1,20 @@
+[
+    {
+        "movieName": "L2: Empuraan",
+        "releaseDate": "27 March 2025",
+        "movieType": "Action / Crime / Thriller",
+        "posterImage": "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-MjcsIE1hciAyMDI1,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00305698-lylkdghedj-portrait.jpg"
+    },
+    {
+        "movieName": "Shanmukha",
+        "releaseDate": "21 March 2025",
+        "movieType": "Adventure / Drama/ Thriller",
+        "posterImage": "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-MjEsIE1hciAyMDI1,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00417774-fzkcdqpawy-portrait.jpg"
+    },
+    {
+        "movieName": "(MAD)2",
+        "releaseDate": "28 March 2025",
+        "movieType": "Comedy / Drama",
+        "posterImage": "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-MjgsIE1hciAyMDI1,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00435629-cxxtllmnzh-portrait.jpg"
+    }
+]
