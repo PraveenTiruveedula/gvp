@@ -27,7 +27,25 @@ export default function ListExample() {
     }
    ]);
 
+  alertItemName = (item) => {
+    alert(item.name +" " +item.id);
+  };
+  return (
+    <View style={styles.container}>
+      <ScrollView>
+        {names.map((item, index) => (
+          <TouchableOpacity
+            key={item.id}
+            style={styles.container}
+            onPress={() => this.alertItemName(item)}>
+            <Text style={styles.text}>{item.name}</Text>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+    </View>
+  );
 }
+
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
