@@ -1,38 +1,68 @@
-import * as React from 'react';
-import { SafeAreaView, ScrollView, Text, Image } from 'react-native';
-import { PaperProvider, Card, Button } from 'react-native-paper';
+import React, { useState, useEffect } from 'react';
+import { View, Text, FlatList, StyleSheet, ActivityIndicator } from 'react-native';
+import MovieCard from './MovieCard.js';
 
-export default function MovieCard({movieItem}) {
-  const leftComponent = ({ size }: { size: number }) => (
-    <Image
-      resizeMode="cover"
-      style={{ width: size, height: size, borderRadius: size / 2 }}
-      source={{
-        uri: 'https://raw.githubusercontent.com/PraveenTiruveedula/gvp/refs/heads/main/movieLogo.png',
-      }}
-    />
-  );
+export default function MoviesListPage({ navigation }) {
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Fetch JSON data from a URL
+    fetch('https://raw.githubusercontent.com/PraveenTiruveedula/gvp/refs/heads/main/movies.json') // Example API
+      .then((response) => response.json())
+      .then((json) => {
+        setData(json); // Save fetched data to state
+        setIsLoading(false); // Stop loading
+      })
+      .catch((error) => {
+        console.error(error);
+        setIsLoading(false);
+      });
+  }, []);
+
   return (
-    <ScrollView>
-      <Card style={{ margin: 20 }}>
-        <Card.Title
-          title={movieItem.movieName}
-          subtitle={movieItem.movieType}
-          titleStyle={{ fontSize: 18, fontWeight: 'bold' }}
-          subtitleStyle={{ fontSize: 14 }}
-          left={leftComponent}
+    <View style={styles.container}>
+      {isLoading ? (
+        // Show a loading spinner while data is being fetched
+        <ActivityIndicator size="large" color="#313131" />
+      ) : (
+        // Display the data in a FlatList
+        <FlatList
+          data={data}
+          keyExtractor={(item) => item.id.toString()} // Use unique ID as key
+          renderItem={({ item }) => (
+            <View style={styles.item}>
+            <MovieCard movieItem={item}/>
+            </View>
+          )}
         />
-        <Card.Cover
-          style={{ margin: 1, borderRadius: 10, height:300 }}
-          source={{
-          uri: movieItem.posterImage
-          }}
-        />
-        <Card.Actions>
-          <Button>Book</Button>
-          <Button>Share</Button>
-        </Card.Actions>
-      </Card>
-    </ScrollView>
+      )}
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 16,
+    backgroundColor: '#f5f5f5',
+  },
+  item: {
+    padding: 16,
+    marginVertical: 8,
+    borderColor: '#313131',
+    borderWidth: 1,
+    borderRadius: 5,
+    backgroundColor: '#fff',
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#313131',
+  },
+  body: {
+    fontSize: 14,
+    color: '#555555',
+    marginTop: 5,
+  },
+});
